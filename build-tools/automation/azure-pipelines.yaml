@@ -41,6 +41,12 @@ stages:
     steps:
     - checkout: self
       submodules: recursive
+    ### PLEASE REMOVE THIS BLOCK IF IN THE DIFF
+    - script: | ### PLEASE REMOVE THIS BLOCK IF IN THE DIFF
+        git checkout master ### PLEASE REMOVE THIS BLOCK IF IN THE DIFF
+        git pull --rebase origin macos-mojave-builds ### PLEASE REMOVE THIS BLOCK IF IN THE DIFF
+        git submodule update --init --recursive ### PLEASE REMOVE THIS BLOCK IF IN THE DIFF
+    ### PLEASE REMOVE THIS BLOCK IF IN THE DIFF
     - template: security\xa-static-analysis\v1.yml@yaml
       parameters:
         credScanSuppressionsFile: $(System.DefaultWorkingDirectory)\build-tools\automation\CredScanSuppressions.json
@@ -60,6 +66,12 @@ stages:
     steps:
     - checkout: self
       submodules: recursive
+    ### PLEASE REMOVE THIS BLOCK IF IN THE DIFF
+    - script: | ### PLEASE REMOVE THIS BLOCK IF IN THE DIFF
+        git checkout master ### PLEASE REMOVE THIS BLOCK IF IN THE DIFF
+        git pull --rebase origin macos-mojave-builds ### PLEASE REMOVE THIS BLOCK IF IN THE DIFF
+        git submodule update --init --recursive ### PLEASE REMOVE THIS BLOCK IF IN THE DIFF
+    ### PLEASE REMOVE THIS BLOCK IF IN THE DIFF
 
     - script: echo "##vso[task.setvariable variable=JAVA_HOME]$HOME/Library/Android/jdk"
       displayName: set JAVA_HOME
@@ -160,6 +172,12 @@ stages:
     steps:
     - checkout: self
       submodules: recursive
+    ### PLEASE REMOVE THIS BLOCK IF IN THE DIFF
+    - script: | ### PLEASE REMOVE THIS BLOCK IF IN THE DIFF
+        git checkout master ### PLEASE REMOVE THIS BLOCK IF IN THE DIFF
+        git pull --rebase origin macos-mojave-builds ### PLEASE REMOVE THIS BLOCK IF IN THE DIFF
+        git submodule update --init --recursive ### PLEASE REMOVE THIS BLOCK IF IN THE DIFF
+    ### PLEASE REMOVE THIS BLOCK IF IN THE DIFF
 
     - task: xamops.azdevex.lingering-process-task.lingering-process-task@1
 
