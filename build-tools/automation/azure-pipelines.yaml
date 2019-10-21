@@ -43,9 +43,9 @@ stages:
       submodules: recursive
     ### PLEASE REMOVE THIS BLOCK IF IN THE DIFF
     - script: | ### PLEASE REMOVE THIS BLOCK IF IN THE DIFF
-        git checkout master ### PLEASE REMOVE THIS BLOCK IF IN THE DIFF
-        git pull --rebase origin macos-mojave-builds ### PLEASE REMOVE THIS BLOCK IF IN THE DIFF
-        git submodule update --init --recursive ### PLEASE REMOVE THIS BLOCK IF IN THE DIFF
+        git checkout master :: PLEASE REMOVE THIS BLOCK IF IN THE DIFF
+        git pull --rebase origin macos-mojave-builds :: PLEASE REMOVE THIS BLOCK IF IN THE DIFF
+        git submodule update --init --recursive :: PLEASE REMOVE THIS BLOCK IF IN THE DIFF
     ### PLEASE REMOVE THIS BLOCK IF IN THE DIFF
     - template: security\xa-static-analysis\v1.yml@yaml
       parameters:
@@ -174,9 +174,9 @@ stages:
       submodules: recursive
     ### PLEASE REMOVE THIS BLOCK IF IN THE DIFF
     - script: | ### PLEASE REMOVE THIS BLOCK IF IN THE DIFF
-        git checkout master ### PLEASE REMOVE THIS BLOCK IF IN THE DIFF
-        git pull --rebase origin macos-mojave-builds ### PLEASE REMOVE THIS BLOCK IF IN THE DIFF
-        git submodule update --init --recursive ### PLEASE REMOVE THIS BLOCK IF IN THE DIFF
+        git checkout master :: PLEASE REMOVE THIS BLOCK IF IN THE DIFF
+        git pull --rebase origin macos-mojave-builds :: PLEASE REMOVE THIS BLOCK IF IN THE DIFF
+        git submodule update --init --recursive :: PLEASE REMOVE THIS BLOCK IF IN THE DIFF
     ### PLEASE REMOVE THIS BLOCK IF IN THE DIFF
 
     - task: xamops.azdevex.lingering-process-task.lingering-process-task@1
