@@ -131,7 +131,7 @@ stages:
         DeveloperIdInstaller: $(developer-id-installer)
         IphoneDeveloper: $(iphone-developer)
         MacDeveloper: $(mac-developer)
-        HostedMacKeychainPassword: $(RedmondPoolKeyChainPassword)
+        HostedMacKeychainPassword: $(AzDO-OnPrem-KeychainPass)
 
     - script: make create-installers V=1 CONFIGURATION=$(XA.Build.Configuration)
       displayName: make create-installers
@@ -159,7 +159,7 @@ stages:
 
     - template: uninstall-certificates/v1.yml@yaml
       parameters:
-        HostedMacKeychainPassword: $(RedmondPoolKeyChainPassword)
+        HostedMacKeychainPassword: $(AzDO-OnPrem-KeychainPass)
 
 # This stage ensures Windows specific build steps continue to work, and runs unit tests.
 # Check - "Xamarin.Android (Windows Build and Test)"
@@ -317,7 +317,7 @@ stages:
 
     - template: uninstall-certificates/v1.yml@yaml
       parameters:
-        HostedMacKeychainPassword: $(RedmondPoolKeyChainPassword)
+        HostedMacKeychainPassword: $(AzDO-OnPrem-KeychainPass)
 
   # Check - "Xamarin.Android (Finalize Installers Queue Vsix Signing)"
   - job: queue_vsix_signing
