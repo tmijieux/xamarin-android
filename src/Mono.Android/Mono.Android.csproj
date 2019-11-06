@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <UsingTask AssemblyFile="..\..\bin\Build$(Configuration)\Xamarin.Android.Tools.BootstrapTasks.dll" TaskName="Xamarin.Android.Tools.BootstrapTasks.CheckApiCompatibility" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -372,4 +373,24 @@
       <ReferenceOutputAssembly>False</ReferenceOutputAssembly>
     </ProjectReference>
   </ItemGroup>
+  <PropertyGroup>
+    <ApiCompatibilityDir>../../external/xamarin-android-api-compatibility</ApiCompatibilityDir>
+  </PropertyGroup>
+  <ItemGroup>
+    <ApiCompatibilityFiles Include="$(ApiCompatibilityDir)/v*.txt" />
+    <ApiCompatibilityFiles Include="$(ApiCompatibilityDir)/reference/*.dll" />
+  </ItemGroup>
+  <Target Name="AfterBuild" Inputs="$(TargetPath);@(ApiCompatibilityFiles)" Outputs="$(IntermediateOutputPath)CheckApiCompatibility.stamp">
+    <CheckApiCompatibility
+      ApiCompatPath="../../packages/Microsoft.DotNet.ApiCompat.5.0.0-beta.19554.1/tools/net472/"
+      ApiLevel="$(AndroidFrameworkVersion)"
+      LastStableApiLevel="$(AndroidLatestStableFrameworkVersion)"
+      ApiCompatContractPath = "$(ApiCompatibilityDir)"
+      TargetImplementationPath="$(OutputPath)"
+      />
+    <Touch Files="$(IntermediateOutputPath)CheckApiCompatibility.stamp" AlwaysCreate="True" />
+    <ItemGroup>
+      <FileWrites Include="$(IntermediateOutputPath)CheckApiCompatibility.stamp" />
+    </ItemGroup>
+  </Target>
 </Project>
